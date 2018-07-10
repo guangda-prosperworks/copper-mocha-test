@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Copper SDK Test</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/5.2.0/mocha.min.css">
+</head>
+<body>
+  <div id="mocha"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/5.2.0/mocha.min.js"></script>
+  <script>mocha.setup('bdd')</script>
+  <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+    <script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
+  <% } %>
+  <script>
+    mocha.checkLeaks();
+    mocha.run();
+  </script>
+</body>
+</html>
